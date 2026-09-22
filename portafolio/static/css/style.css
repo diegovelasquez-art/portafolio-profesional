@@ -765,3 +765,75 @@ body {
   border: 0;
   object-fit: cover;
 }
+
+/* ==========================================================================
+   MODAL LIGHTBOX (VISTA AMPLIADA DE IMÁGENES)
+   ========================================================================== */
+.modal-imagen {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-imagen.activo {
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+}
+
+.contenido-modal {
+  max-width: 85%;
+  max-height: 80vh;
+  border-radius: var(--radio-borde);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  object-fit: contain;
+  animation: zoomModal 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes zoomModal {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.caption-modal {
+  margin-top: 15px;
+  text-align: center;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.cerrar-modal {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  transition: var(--transicion);
+  z-index: 2001;
+}
+
+.cerrar-modal:hover {
+  color: var(--color-secundario);
+  transform: scale(1.15);
+}
